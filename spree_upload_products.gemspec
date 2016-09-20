@@ -36,4 +36,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'spree_backend', spree_version
   spec.add_development_dependency 'spree_frontend', spree_version
   spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'csv'
 end
