@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in spree_upload_products.gemspec
+gem 'spree', github: 'spree/spree', branch: '3-0-stable'
+
 gemspec
