@@ -1,4 +1,5 @@
 require "spree_upload_products/version"
+require 'csv'
 
 module SpreeUploadProducts
   class ProductsCsv
