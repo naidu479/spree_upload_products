@@ -28,7 +28,6 @@ module SpreeUploadProducts
                       price: row['Master Price'].try(:strip).to_f,
                       sku: "#{Rails.application.class.parent_name}-#{count}-#{token}-00"
                     )
-                    product
                   end
         if product.present?
           add_taxons(row, product) if row['Product Category'].present?
@@ -110,7 +109,9 @@ module SpreeUploadProducts
     end
 
     def add_stock(variant, row)
-      stock_location = Spree::StockLocation.where(name: row['Stock Location'].try(:strip)).first
+      location_name = row['Stock Location'].present? ? row['Stock Location'].try(:strip) : 'default'
+      stock_location = Spree::StockLocation.where(name: location_name).first
+      return unless stock_location.present?
       stock_movement = stock_location.stock_movements.build(quantity: row['quantity'].try(:strip).to_i)
       stock_movement.stock_item = stock_location.set_up_stock_item(variant)
       stock_movement.save
